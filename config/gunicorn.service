@@ -6,9 +6,9 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/Projects/aws_ubuntu_instance/my_api_configuration
-Environment="PATH=/home/ubuntu/Projects/aws_ubuntu_instance/my_api_configuration/.venv/bin"
-ExecStart=/home/ubuntu/Projects/aws_ubuntu_instance/my_api_configuration/.venv/bin/gunicorn \
+WorkingDirectory=/home/ubuntu/my_api_configuration
+Environment="PATH=/home/ubuntu/my_api_configuration/.venv/bin"
+ExecStart=/home/ubuntu/my_api_configuration/.venv/bin/gunicorn \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
           my_api_configuration.wsgi:application
