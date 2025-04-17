@@ -1,0 +1,18 @@
+[Unit]
+Description=gunicorn daemon for my_api_configuration
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/Projects/aws_ubuntu_instance/my_api_configuration
+Environment="PATH=/home/ubuntu/Projects/aws_ubuntu_instance/my_api_configuration/.venv/bin"
+ExecStart=/home/ubuntu/Projects/aws_ubuntu_instance/my_api_configuration/.venv/bin/gunicorn \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          my_api_configuration.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
